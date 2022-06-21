@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="AnimeDB.App.Pages.MediaSelectPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localPages="using:AnimeDB.App.Pages"
+    xmlns:localControls="using:AnimeDB.App.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="50,0,50,50" KeyDown="Page_KeyDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <localControls:AnimeInfoControl x:Name="AnimeInfoControl" />
+                <localControls:ThemeInfoControl x:Name="ThemeInfoControl" />
+                <localControls:MediaCollectionInfoControl x:Name="MediaCollectionInfoControl" MediaSelected="MediaCollectionInfoControl_MediaSelected" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 30, 0, 0">
+                    <StackPanel.Resources>
+                        <Style x:Key="NavigationButton" TargetType="Button">
+                            <Setter Property="Margin" Value="5,0,5,0" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Style="{StaticResource NavigationButton}" Click="NavigationFirstButton_Click">
+                        <SymbolIcon Symbol="Back" />
+                    </Button>
+                    <Button Style="{StaticResource NavigationButton}" Click="NavigationPreviousButton_Click">
+                        <SymbolIcon Symbol="Previous" />
+                    </Button>
+                    <TextBlock x:Name="NavigationTextBlock" Text="0 of 0" Margin="15, 15, 15, 15" />
+                    <Button Style="{StaticResource NavigationButton}" Click="NavigationNextButton_Click">
+                        <SymbolIcon Symbol="Next" />
+                    </Button>
+                    <Button Style="{StaticResource NavigationButton}" Click="NavigationLastButton_Click">
+                        <SymbolIcon Symbol="Forward" />
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Frame Grid.Row="2" HorizontalAlignment="Stretch">
+                <InfoBar x:Name="InfoBarStatus"></InfoBar>
+            </Frame>
+        </Grid>
+    </ScrollViewer>
+</Page>

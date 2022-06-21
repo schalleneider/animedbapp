@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AnimeDB.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AnimeDB.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

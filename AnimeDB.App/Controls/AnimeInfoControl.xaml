@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="AnimeDB.App.Controls.AnimeInfoControl"
+    x:Name="AnimeInfoControlRoot"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localControls="using:AnimeDB.App.Controls">
+    <UserControl.Resources>
+        <Style x:Key="GridStyle" TargetType="Grid">
+            <Setter Property="Margin" Value="0,0,0,0" />
+        </Style>
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Margin" Value="0,30,0,15" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource GridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Anime" Style="{StaticResource TitleStyle}"  />
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="0" Text="{Binding Anime.Id, ElementName=AnimeInfoControlRoot}" Header="Id"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="1" Text="{Binding Anime.Title, ElementName=AnimeInfoControlRoot}" Header="Title"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="2" Text="{Binding Anime.Season, ElementName=AnimeInfoControlRoot}" Header="Season"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="3" Text="{Binding Anime.Year, ElementName=AnimeInfoControlRoot}" Header="Year"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="4" Text="{Binding Anime.Type, ElementName=AnimeInfoControlRoot}" Header="Type"/>
+    </Grid>
+</UserControl>
