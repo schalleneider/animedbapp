@@ -8,11 +8,11 @@
 
   <Identity
     Name="25bb4a0d-1a4c-4af5-950e-a3f9eb0480e5"
-    Publisher="CN=PhinalFontasyCorporation"
-    Version="1.0.0.0" />
+    Publisher="CN=Phinal Fontasy Corporation, O=Phinal Fontasy Corporation, C=CA"
+    Version="1.0.1.0" />
 
   <Properties>
-    <DisplayName>AnimeDB.App</DisplayName>
+    <DisplayName>AnimeDBApp</DisplayName>
     <PublisherDisplayName>Phinal Fontasy Corporation</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

@@ -11,11 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDB.Service", "AnimeDB.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnimeDB", "AnimeDB", "{AD480F68-01C2-40F6-BA39-5711E6B84BAD}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE.txt = ..\LICENSE.txt
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cert", "cert", "{6D4CC4D8-1DAB-4F4F-A80E-5A48CF1FDB39}"
+	ProjectSection(SolutionItems) = preProject
+		..\cert\PhinalFontasyCorporation_CA_02181985.pfx = ..\cert\PhinalFontasyCorporation_CA_02181985.pfx
 	EndProjectSection
 EndProject
 Global
@@ -89,6 +94,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6D4CC4D8-1DAB-4F4F-A80E-5A48CF1FDB39} = {AD480F68-01C2-40F6-BA39-5711E6B84BAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {40E15279-E668-4707-A672-2138DB27B30D}
