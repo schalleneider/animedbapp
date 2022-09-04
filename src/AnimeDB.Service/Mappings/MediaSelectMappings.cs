@@ -30,7 +30,8 @@ namespace AnimeDB.Service.Mappings
                 Key = theme.KeyId,
                 Artist = theme.Artist,
                 Title = theme.Title,
-                Type = theme.Type
+                Type = theme.Type,
+                AppHidden = theme.AppHidden.GetValueOrDefault() == 1 
             };
         }
 

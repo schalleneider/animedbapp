@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AnimeDB.App</RootNamespace>
     <Platforms>x86;x64;arm64</Platforms>
@@ -18,17 +18,18 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxPackageDir>C:\Users\willi\Desktop\Code\animedbapp\dist</AppxPackageDir>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Controls\AnimeInfoControl.xaml" />
     <None Remove="Controls\InfoBlockControl.xaml" />
     <None Remove="Controls\MediaCollectionInfoControl.xaml" />
-    <None Remove="Controls\ThemeInfoControly.xaml" />
+    <None Remove="Controls\ThemeInfoControl.xaml" />
     <None Remove="Pages\MediaSelectPage.xaml" />
     <None Remove="Pages\SettingsPage.xaml" />
   </ItemGroup>
@@ -62,7 +63,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Controls\ThemeInfoControly.xaml">
+    <Page Update="Controls\ThemeInfoControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

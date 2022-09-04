@@ -16,7 +16,7 @@
             </Grid.RowDefinitions>
             <StackPanel>
                 <localControls:AnimeInfoControl x:Name="AnimeInfoControl" />
-                <localControls:ThemeInfoControl x:Name="ThemeInfoControl" />
+                <localControls:ThemeInfoControl x:Name="ThemeInfoControl" ThemeUnhide="ThemeInfoControl_ThemeUnHide" ThemeHide="ThemeInfoControl_ThemeHide" />
                 <localControls:MediaCollectionInfoControl x:Name="MediaCollectionInfoControl" MediaSelected="MediaCollectionInfoControl_MediaSelected" />
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 30, 0, 0">
                     <StackPanel.Resources>

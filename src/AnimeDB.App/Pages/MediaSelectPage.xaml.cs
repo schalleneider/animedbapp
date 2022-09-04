@@ -69,7 +69,7 @@ namespace AnimeDB.App.Pages
 
         private void RefreshPage()
         {
-            if (this.ThemesWithNoDownloadsCollection != null)
+            if (this.ThemesWithNoDownloadsCollection != null && this.ThemesWithNoDownloadsCollection.Count > 0)
             {
                 this.CurrentThemeId = this.ThemesWithNoDownloadsCollection.ElementAt(this.CurrentIndex);
 
@@ -99,6 +99,44 @@ namespace AnimeDB.App.Pages
                 if (rowsUpdated > 0)
                 {
                     this.ShowMessage($"Media {args.MediaIdSelected} selected.", InfoBarSeverity.Success);
+                }
+
+                this.NavigationNextButton_Click(sender, null);
+            }
+            catch (Exception error)
+            {
+                this.ShowMessage($"Error updating selected media: {error.Message}", InfoBarSeverity.Error);
+            }
+        }
+
+        private void ThemeInfoControl_ThemeUnHide(ThemeInfoControl sender, ThemeInfoHideEventArgs args)
+        {
+            try
+            {
+                var rowsUpdated = this.AnimeDBService.UpdateThemeHide(this.CurrentThemeId, false);
+
+                if (rowsUpdated > 0)
+                {
+                    this.ShowMessage($"Theme {this.CurrentThemeId} unhidden.", InfoBarSeverity.Success);
+                }
+
+                this.NavigationNextButton_Click(sender, null);
+            }
+            catch (Exception error)
+            {
+                this.ShowMessage($"Error updating selected media: {error.Message}", InfoBarSeverity.Error);
+            }
+        }
+
+        private void ThemeInfoControl_ThemeHide(ThemeInfoControl sender, ThemeInfoHideEventArgs args)
+        {
+            try
+            {
+                var rowsUpdated = this.AnimeDBService.UpdateThemeHide(this.CurrentThemeId, true);
+
+                if (rowsUpdated > 0)
+                {
+                    this.ShowMessage($"Theme {this.CurrentThemeId} hidden.", InfoBarSeverity.Success);
                 }
 
                 this.NavigationNextButton_Click(sender, null);

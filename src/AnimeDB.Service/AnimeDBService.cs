@@ -19,7 +19,7 @@ namespace AnimeDB.Service
 
         public List<long> GetThemesWithNoDownloads()
         {
-            var themesWithNoDownloads = this.AnimeDBContext.Theme.FromSqlRaw("SELECT T.* FROM Theme T WHERE T.Id NOT IN ( SELECT DISTINCT _T.Id FROM Download _D JOIN Media _M on _D.KeyId = _M.Id JOIN Theme _T ON _M.ThemeId = _T.Id)");
+            var themesWithNoDownloads = this.AnimeDBContext.Theme.FromSqlRaw("SELECT T.* FROM Theme T WHERE (T.AppHidden IS NULL OR T.AppHidden = 0) AND T.Id NOT IN ( SELECT DISTINCT _T.Id FROM Download _D JOIN Media _M on _D.KeyId = _M.Id JOIN Theme _T ON _M.ThemeId = _T.Id)");
 
             var result = from theme in themesWithNoDownloads
                          select theme.Id;
@@ -60,6 +60,18 @@ namespace AnimeDB.Service
                 {
                     media.IsFinalChoice = media.Id == mediaId ? 1 : 0;
                 }
+            }
+
+            return this.AnimeDBContext.SaveChanges();
+        }
+
+        public int UpdateThemeHide(long themeId, bool hide)
+        {
+            var theme = this.AnimeDBContext.Theme.Where(theme => theme.Id == themeId).FirstOrDefault();
+
+            if (theme != null)
+            {
+                theme.AppHidden = hide ? 1 : 0;
             }
 
             return this.AnimeDBContext.SaveChanges();
