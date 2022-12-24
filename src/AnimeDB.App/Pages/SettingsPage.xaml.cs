@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Linq;
 
 namespace AnimeDB.App.Pages
 {
@@ -50,8 +51,25 @@ namespace AnimeDB.App.Pages
         private void RefreshPage()
         {
             this.TextBoxDatabasePath.Text = this.SettingsService.DatabasePath;
+
+            this.RefreshListBoxChannelBlacklist();
+            this.RefreshListBoxChannelWhitelist();
         }
-        
+
+        private void RefreshListBoxChannelBlacklist()
+        {
+            this.ListBoxChannelBlacklist.Items.Clear();
+
+            this.SettingsService.ChannelBlacklistList.ForEach(item => this.ListBoxChannelBlacklist.Items.Add(item));
+        }
+
+        private void RefreshListBoxChannelWhitelist()
+        {
+            this.ListBoxChannelWhitelist.Items.Clear();
+
+            this.SettingsService.ChannelWhitelistList.ForEach(item => this.ListBoxChannelWhitelist.Items.Add(item));
+        }
+
         private async void ButtonChooseDatabasePath_Click(object sender, RoutedEventArgs e)
         {
             var file = await this.SettingsService.ChooseDatabaseFile();
@@ -66,5 +84,81 @@ namespace AnimeDB.App.Pages
                 this.ShowMessage("Database path setting updated", InfoBarSeverity.Success);
             }
         }
-    }
+
+        private void ButtonAddChannelBlacklist_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.TextBoxAddChannelBlacklist.Text))
+            {
+                this.SettingsService.ChannelBlacklistList.Add(this.TextBoxAddChannelBlacklist.Text);
+
+                this.SettingsService.SaveSettings();
+                this.RefreshPage();
+
+                this.TextBoxAddChannelBlacklist.Text = string.Empty;
+
+                this.ShowMessage("Channel Blacklist list setting updated", InfoBarSeverity.Success);
+            }
+        }
+
+        private void ButtonRemoveChannelBlacklist_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.TextBoxAddChannelBlacklist.Text))
+            {
+                this.SettingsService.ChannelBlacklistList.Remove(this.TextBoxAddChannelBlacklist.Text);
+
+                this.SettingsService.SaveSettings();
+                this.RefreshPage();
+
+                this.TextBoxAddChannelBlacklist.Text = string.Empty;
+
+                this.ShowMessage("Channel Blacklist list setting updated", InfoBarSeverity.Success);
+            }
+        }
+
+        private void ListBoxChannelBlacklist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.ListBoxChannelBlacklist.SelectedItem != null)
+            {
+                this.TextBoxAddChannelBlacklist.Text = this.ListBoxChannelBlacklist.SelectedItem.ToString();
+            }
+        }
+
+        private void ButtonAddChannelWhitelist_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.TextBoxAddChannelWhitelist.Text))
+            {
+                this.SettingsService.ChannelWhitelistList.Add(this.TextBoxAddChannelWhitelist.Text);
+
+                this.SettingsService.SaveSettings();
+                this.RefreshPage();
+
+                this.TextBoxAddChannelWhitelist.Text = string.Empty;
+
+                this.ShowMessage("Channel Whitelist list setting updated", InfoBarSeverity.Success);
+            }
+        }
+
+        private void ButtonRemoveChannelWhitelist_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.TextBoxAddChannelWhitelist.Text))
+            {
+                this.SettingsService.ChannelWhitelistList.Remove(this.TextBoxAddChannelWhitelist.Text);
+
+                this.SettingsService.SaveSettings();
+                this.RefreshPage();
+
+                this.TextBoxAddChannelWhitelist.Text = string.Empty;
+
+                this.ShowMessage("Channel Whitelist list setting updated", InfoBarSeverity.Success);
+            }
+        }
+
+        private void ListBoxChannelWhitelist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.ListBoxChannelWhitelist.SelectedItem != null)
+            {
+                this.TextBoxAddChannelWhitelist.Text = this.ListBoxChannelWhitelist.SelectedItem.ToString();
+            }
+        }
+    }  
 }

@@ -28,7 +28,35 @@
                 <TextBlock Text="Database" Style="{StaticResource SubTitleStyle}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <TextBox x:Name="TextBoxDatabasePath" Margin="0,24,0,0" Header="Path" IsReadOnly="True" HorizontalAlignment="Left" Width="600" />
-                    <Button x:Name="ButtonChooseDatabasePath" Content="..." Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonChooseDatabasePath_Click"/>
+                    <Button x:Name="ButtonChooseDatabasePath" Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonChooseDatabasePath_Click">
+                        <SymbolIcon Symbol="More" />
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="Channel Blacklist" Style="{StaticResource SubTitleStyle}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="TextBoxAddChannelBlacklist" Margin="0,24,0,0" Header="Channel Name" HorizontalAlignment="Left" Width="600" />
+                    <Button x:Name="ButtonAddChannelBlacklist" Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonAddChannelBlacklist_Click">
+                        <SymbolIcon Symbol="Add" />
+                    </Button>
+                    <Button x:Name="ButtonRemoveChannelBlacklist" Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonRemoveChannelBlacklist_Click">
+                        <SymbolIcon Symbol="Delete" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <ListBox x:Name="ListBoxChannelBlacklist" Width="600" SelectionMode="Single" SelectionChanged="ListBoxChannelBlacklist_SelectionChanged"></ListBox>
+                </StackPanel>
+                <TextBlock Text="Channel Whitelist" Style="{StaticResource SubTitleStyle}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="TextBoxAddChannelWhitelist" Margin="0,24,0,0" Header="Channel Name" HorizontalAlignment="Left" Width="600" />
+                    <Button x:Name="ButtonAddChannelWhitelist" Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonAddChannelWhitelist_Click">
+                        <SymbolIcon Symbol="Add" />
+                    </Button>
+                    <Button x:Name="ButtonRemoveChannelWhitelist" Margin="12,0,0,0" VerticalAlignment="Bottom" Click="ButtonRemoveChannelWhitelist_Click">
+                        <SymbolIcon Symbol="Delete" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <ListBox x:Name="ListBoxChannelWhitelist" Width="600" SelectionMode="Single" SelectionChanged="ListBoxChannelWhitelist_SelectionChanged"></ListBox>
                 </StackPanel>
             </StackPanel>
             <Frame Grid.Row="1" HorizontalAlignment="Stretch">

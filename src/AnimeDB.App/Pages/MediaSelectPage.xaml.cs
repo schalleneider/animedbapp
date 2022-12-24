@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static AnimeDB.Service.Models.Media;
 
 namespace AnimeDB.App.Pages
 {
@@ -40,6 +41,7 @@ namespace AnimeDB.App.Pages
         #endregion
 
         private AnimeDBService AnimeDBService;
+        private SettingsService SettingsService;
 
         private List<long> ThemesWithNoDownloadsCollection;
         private long CurrentThemeId;
@@ -52,6 +54,7 @@ namespace AnimeDB.App.Pages
             this.SetupInfoBarStatusTimer();
 
             this.AnimeDBService = new AnimeDBService((Application.Current as App)?.AnimeDBContext);
+            this.SettingsService = (Application.Current as App)?.SettingsService;
 
             try
             {
@@ -78,6 +81,12 @@ namespace AnimeDB.App.Pages
                 try
                 {
                     var mediaSelect = this.AnimeDBService.GetMediaToSelect(this.CurrentThemeId);
+
+                    // recalculate channel status
+                    foreach (var media in mediaSelect.MediaCollection)
+                    {
+                        media.CalculateChannelStatus(this.SettingsService.ChannelBlacklistList, this.SettingsService.ChannelWhitelistList);
+                    }
 
                     this.AnimeInfoControl.Anime = mediaSelect.Anime;
                     this.ThemeInfoControl.Theme = mediaSelect.Theme;

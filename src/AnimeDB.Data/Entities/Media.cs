@@ -14,6 +14,7 @@ namespace AnimeDB.Data.Entities
         public long? ThemeId { get; set; }
         public string KeyId { get; set; }
         public string Title { get; set; }
+        public string Channel { get; set; }
         public string Description { get; set; }
         public string Duration { get; set; }
         public long? DurationSeconds { get; set; }

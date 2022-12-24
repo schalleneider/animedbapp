@@ -41,6 +41,8 @@ namespace AnimeDB.Service.Mappings
             {
                 Id = media.Id,
                 Title = media.Title,
+                Address = media.Address,
+                Channel = media.Channel,
                 Duration = media.Duration,
                 DurationSeconds = media.DurationSeconds.GetValueOrDefault(),
                 NumberOfViews = media.NumberOfViews.GetValueOrDefault(),

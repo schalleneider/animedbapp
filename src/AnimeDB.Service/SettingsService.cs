@@ -1,5 +1,8 @@
 ﻿using Microsoft.UI.Xaml;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Storage;
@@ -11,6 +14,10 @@ namespace AnimeDB.Service
     public class SettingsServiceSettingsChangedEventArgs : EventArgs
     {
         public string DatabasePath { get; set; }
+
+        public List<string> ChannelBlacklistList { get; set; }
+
+        public List<string> ChannelWhitelistList { get; set; }
     }
 
     public class SettingsService
@@ -35,10 +42,41 @@ namespace AnimeDB.Service
             } 
         }
 
+        public string ChannelBlacklist
+        {
+            get
+            {
+                return (string)this.Settings["ChannelBlacklist"];
+            }
+            set
+            {
+                this.Settings["ChannelBlacklist"] = value;
+            }
+        }
+
+        public string ChannelWhitelist
+        {
+            get
+            {
+                return (string)this.Settings["ChannelWhitelist"];
+            }
+            set
+            {
+                this.Settings["ChannelWhitelist"] = value;
+            }
+        }
+
+        public List<string> ChannelBlacklistList { get; set; }
+
+        public List<string> ChannelWhitelistList { get; set; }
+
         public SettingsService(Window window)
         {
             this.Window = window;
             this.Container = ApplicationData.Current.LocalSettings;
+
+            this.ChannelBlacklistList = new List<string>();
+            this.ChannelWhitelistList = new List<string>();
         }
 
         public void LoadSettings()
@@ -52,15 +90,35 @@ namespace AnimeDB.Service
             }
 
             this.Settings = composite;
+
+            if (!string.IsNullOrEmpty(this.ChannelBlacklist))
+            {
+                this.ChannelBlacklistList.Clear();
+                this.ChannelBlacklistList.AddRange(this.ChannelBlacklist.Split('|'));
+            }
+
+            if (!string.IsNullOrEmpty(this.ChannelWhitelist))
+            {
+                this.ChannelWhitelistList.Clear();
+                this.ChannelWhitelistList.AddRange(this.ChannelWhitelist.Split('|'));
+            }
         }
 
         public void SaveSettings()
         {
+            this.ChannelBlacklist = string.Join('|', this.ChannelBlacklistList);
+            this.ChannelWhitelist = string.Join('|', this.ChannelWhitelistList);
+
             this.Container.Values["AnimeDBSettings"] = this.Settings;
 
             if (this.SettingsChanged != null)
             {
-                this.SettingsChanged(this, new SettingsServiceSettingsChangedEventArgs() { DatabasePath = this.DatabasePath });
+                this.SettingsChanged(this, new SettingsServiceSettingsChangedEventArgs() 
+                { 
+                    DatabasePath = this.DatabasePath,
+                    ChannelBlacklistList = this.ChannelBlacklistList,
+                    ChannelWhitelistList = this.ChannelWhitelistList
+                });
             }
         }
 

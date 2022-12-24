@@ -1,4 +1,7 @@
-﻿namespace AnimeDB.Service.Models
+﻿using AnimeDB.Data.Entities;
+using System.Collections.Generic;
+
+namespace AnimeDB.Service.Models
 {
     public partial class Media
     {
@@ -13,6 +16,8 @@
 
         public long Id { get; set; }
         public string Title { get; set; }
+        public string Address { get; set; }
+        public string Channel { get; set; }
         public string Duration { get; set; }
         public long DurationSeconds { get; set; }
         public long NumberOfViews { get; set; }
@@ -21,6 +26,8 @@
         public bool IsBestRank { get; set; }
         public bool IsFinalChoice { get; set; }
         public long Rank { get; set; }
+
+        public int ChannelStatus { get; set; }
 
         public int DurationStatus
         {
@@ -122,6 +129,18 @@
 
                 return (int)MediaPropertyStatus.Neutral;
             }
+        }
+
+        public void CalculateChannelStatus(List<string> channelBlacklistList, List<string> channelWhitelistList)
+        {
+            this.ChannelStatus = (int)MediaPropertyStatus.Neutral;
+            
+            if (channelBlacklistList.Contains(this.Channel))
+                this.ChannelStatus = (int)MediaPropertyStatus.Worst;
+            
+            if (channelWhitelistList.Contains(this.Channel))
+                this.ChannelStatus = (int)MediaPropertyStatus.Best;
+                
         }
     }
 }
