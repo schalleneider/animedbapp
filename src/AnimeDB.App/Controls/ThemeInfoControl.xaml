@@ -12,12 +12,22 @@
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Margin" Value="0,30,0,15" />
         </Style>
+        <Style x:Key="SearchButton" TargetType="HyperlinkButton">
+            <Setter Property="Margin" Value="10,10,0,0" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Background" Value="RoyalBlue" />
+        </Style>
         <Style x:Key="UnhideButton" TargetType="Button">
-            <Setter Property="Margin" Value="100,10,0,0" />
+            <Setter Property="Margin" Value="10,10,0,0" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="Background" Value="DarkGreen" />
         </Style>
         <Style x:Key="HideButton" TargetType="Button">
-            <Setter Property="Margin" Value="15,10,0,0" />
+            <Setter Property="Margin" Value="10,10,0,0" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="Background" Value="DarkRed" />
         </Style>
     </UserControl.Resources>
@@ -34,7 +44,6 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Theme" Style="{StaticResource TitleStyle}"  />
         <localControls:InfoBlockControl Grid.Row="1" Grid.Column="0" Text="{Binding Theme.Id, ElementName=ThemeInfoControlRoot}" Header="Id"/>
@@ -43,11 +52,16 @@
         <localControls:InfoBlockControl Grid.Row="1" Grid.Column="3" Text="{Binding Theme.Title, ElementName=ThemeInfoControlRoot}" Header="Title"/>
         <localControls:InfoBlockControl Grid.Row="1" Grid.Column="4" Text="{Binding Theme.Type, ElementName=ThemeInfoControlRoot}" Header="Type"/>
         <localControls:InfoBlockControl Grid.Row="1" Grid.Column="5" Text="{Binding Theme.AppHidden, ElementName=ThemeInfoControlRoot}" Header="Hidden"/>
-        <Button Grid.Row="1" Grid.Column="6" Style="{StaticResource UnhideButton}" Click="UnhideButton_Click">
-            <SymbolIcon Symbol="Like" />
-        </Button>
-        <Button Grid.Row="1" Grid.Column="7" Style="{StaticResource HideButton}" Click="HideButton_Click">
-            <SymbolIcon Symbol="Dislike" />
-        </Button>
+        <StackPanel Grid.Row="1" Grid.Column="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="50, 0, 0, 0">
+            <HyperlinkButton NavigateUri="{Binding Theme.YoutubeSearchLink, ElementName=ThemeInfoControlRoot}" Style="{StaticResource SearchButton}">
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE721;" FontSize="16" />
+            </HyperlinkButton>
+            <Button Style="{StaticResource UnhideButton}" Click="UnhideButton_Click">
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE930;" FontSize="16" />
+            </Button>
+            <Button Style="{StaticResource HideButton}" Click="HideButton_Click">
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEA39;" FontSize="16" />
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

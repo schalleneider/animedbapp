@@ -19,7 +19,7 @@ namespace AnimeDB.Service
 
         public List<long> GetThemesWithNoDownloads()
         {
-            var themesWithNoDownloads = this.AnimeDBContext.Theme.FromSqlRaw("SELECT T.* FROM Theme T WHERE (T.AppHidden IS NULL OR T.AppHidden = 0) AND T.Id NOT IN ( SELECT DISTINCT _T.Id FROM Download _D JOIN Media _M on _D.KeyId = _M.Id JOIN Theme _T ON _M.ThemeId = _T.Id)");
+            var themesWithNoDownloads = this.AnimeDBContext.Theme.FromSqlRaw("SELECT Theme.* FROM Theme INNER JOIN Source ON Source.KeyId = Theme.KeyId INNER JOIN SourceType ON SourceType.Id = Source.SourceTypeId AND SourceType.Name = 'MyAnimeList' INNER JOIN MyAnimeList ON MyAnimeList.Id = Source.ExternalId INNER JOIN AniList_MyAnimeList ON AniList_MyAnimeList.MyAnimeListId = MyAnimeList.Id INNER JOIN AniList ON AniList.Id = AniList_MyAnimeList.AniListId INNER JOIN Personal ON Personal.AniListId = AniList.Id INNER JOIN User ON User.Id = Personal.UserId\r\nWHERE (Theme.AppHidden IS NULL OR Theme.AppHidden = 0) AND Theme.Id NOT IN ( SELECT DISTINCT _T.Id FROM Download _D JOIN Media _M on _D.KeyId = _M.Id JOIN Theme _T ON _M.ThemeId = _T.Id)\r\nORDER BY AniList.StartDate DESC");
 
             var result = from theme in themesWithNoDownloads
                          select theme.Id;

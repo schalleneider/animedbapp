@@ -7,5 +7,10 @@
         public string Season { get; set; }
         public long Year { get; set; }
         public string Type { get; set; }
+
+        public string AniListLink
+        {
+            get { return "https://anilist.co/anime/" + this.Id; }
+        }
     }
 }

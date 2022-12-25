@@ -7,6 +7,11 @@
         public string Artist { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
-        public bool AppHidden { get; set; }        
+        public bool AppHidden { get; set; }
+
+        public string YoutubeSearchLink
+        {
+            get { return "https://www.youtube.com/results?search_query=" + this.Artist + "+" + this.Title; }
+        }
     }
 }

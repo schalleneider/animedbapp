@@ -17,7 +17,7 @@
     <AppxPackageSigningTimestampServerUrl>https://github.com/schalleneider/animedbapp</AppxPackageSigningTimestampServerUrl>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxPackageDir>C:\Users\willi\Desktop\Code\animedbapp\dist</AppxPackageDir>
+    <AppxPackageDir>C:\Users\Admin\Desktop\Code\animedbapp\dist\</AppxPackageDir>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>

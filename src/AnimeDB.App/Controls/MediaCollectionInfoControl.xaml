@@ -18,10 +18,12 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
         <Style x:Key="RadioStyle" TargetType="RadioButton">
-            <Setter Property="Margin" Value="10,0,0,-5" />
+            <Setter Property="Margin" Value="10,0,0,0" />
         </Style>
         <Style x:Key="HyperlinkStyle" TargetType="HyperlinkButton">
-            <Setter Property="Margin" Value="10,0,0,-5" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
         </Style>
     </UserControl.Resources>
     <Grid Style="{StaticResource GridStyle}">
@@ -70,7 +72,7 @@
                         <ColumnDefinition Width="50" />
                         <ColumnDefinition Width="80" />
                         <ColumnDefinition Width="50" />
-                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="50" />
                     </Grid.ColumnDefinitions>
                     <localControls:InfoBlockControl Grid.Column="0" Text="{x:Bind Id}" />
@@ -83,7 +85,7 @@
                     <localControls:InfoBlockControl Grid.Column="7" Text="{x:Bind IsBestRank}" Status="{x:Bind IsBestRankStatus}" />
                     <localControls:InfoBlockControl Grid.Column="8" Text="{x:Bind Rank}" Status="{x:Bind RankStatus}" />
                     <HyperlinkButton Grid.Column="9" NavigateUri="{x:Bind Address}" Style="{StaticResource HyperlinkStyle}">
-                        <SymbolIcon Symbol="Play" />
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEA69;" FontSize="16" />
                     </HyperlinkButton>
                     <RadioButton Grid.Column="10" Style="{StaticResource RadioStyle}" IsChecked="{x:Bind IsFinalChoice}" Click="RadioButton_Click" GroupName="MediaCollectionInfoControl" Tag="{x:Bind Id}" />
                 </Grid>
