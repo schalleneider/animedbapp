@@ -1,6 +1,7 @@
 ﻿using AnimeDB.Data.Entities;
 using AnimeDB.Service.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,22 @@ namespace AnimeDB.Service.Mappings
 {
     internal static class MediaSelectMappings
     {
-        public static Anime ToModel(this AniList anilist)
+        public static Anime.AniListEntry ToModel(this AniList aniList)
         {
-            return new Anime
+            return new Anime.AniListEntry
             {
-                Id = anilist.Id,
-                Title = anilist.Title,
-                Season = anilist.Season,
-                Year = anilist.SeasonYear.GetValueOrDefault(),
-                Type = anilist.Type
+                Id = aniList.Id,
+                Title = aniList.Title,
+                Season = aniList.Season,
+                Year = aniList.SeasonYear.GetValueOrDefault(),
+                Type = aniList.Type
+            };
+        }
+        public static Anime.MyAnimeListEntry ToModel(this MyAnimeList myAnimeList)
+        {
+            return new Anime.MyAnimeListEntry
+            {
+                Id = myAnimeList.Id
             };
         }
 
@@ -31,7 +39,9 @@ namespace AnimeDB.Service.Mappings
                 Artist = theme.Artist,
                 Title = theme.Title,
                 Type = theme.Type,
-                AppHidden = theme.AppHidden.GetValueOrDefault() == 1 
+                AppHidden = theme.AppHidden.GetValueOrDefault() == 1,
+                IsFavorite = theme.IsFavorite.GetValueOrDefault() == 1,
+                IsBad = theme.IsBad.GetValueOrDefault() == 1
             };
         }
 

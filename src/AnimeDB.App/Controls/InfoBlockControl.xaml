@@ -6,7 +6,7 @@
     <UserControl.Resources>
         <Style x:Key="BorderStyle" TargetType="Border">
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="#303030" />
+            <Setter Property="BorderBrush" Value="{ThemeResource ControlFillColorSecondaryBrush}" />
             <Setter Property="Margin" Value="0,5,0,0" />
             <Setter Property="Padding" Value="10,5,15,5" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -20,9 +20,9 @@
         </Style>
     </UserControl.Resources>
     <StackPanel Margin="10,0,0,0">
-        <TextBlock Style="{StaticResource HeaderStyle}" Text="{Binding Header, ElementName=InfoBlockControlRoot}" Visibility="{Binding HeaderVisibility, ElementName=InfoBlockControlRoot}" />
-        <Border Style="{StaticResource BorderStyle}" Background="{Binding StatusBrush, ElementName=InfoBlockControlRoot}">
-            <TextBlock Style="{StaticResource ItemStyle}" Text="{Binding Text, ElementName=InfoBlockControlRoot}" IsTextSelectionEnabled="True" />
+        <TextBlock Style="{StaticResource HeaderStyle}" Text="{x:Bind Header, Mode=OneWay}" Visibility="{x:Bind HeaderVisibility, Mode=OneWay}" />
+        <Border Style="{StaticResource BorderStyle}" Background="{x:Bind StatusBrush, Mode=OneWay}">
+            <TextBlock Style="{StaticResource ItemStyle}" Text="{x:Bind Text, Mode=OneWay}" IsTextSelectionEnabled="True" />
         </Border>
     </StackPanel>
 </UserControl>

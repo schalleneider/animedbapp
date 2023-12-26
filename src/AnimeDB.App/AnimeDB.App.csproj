@@ -28,6 +28,7 @@
   <ItemGroup>
     <None Remove="Controls\AnimeInfoControl.xaml" />
     <None Remove="Controls\InfoBlockControl.xaml" />
+    <None Remove="Controls\InfoBlockToggleControl.xaml" />
     <None Remove="Controls\MediaCollectionInfoControl.xaml" />
     <None Remove="Controls\ThemeInfoControl.xaml" />
     <None Remove="Pages\MediaSelectPage.xaml" />
@@ -59,6 +60,9 @@
     <ProjectReference Include="..\AnimeDB.Service\AnimeDB.Service.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\InfoBlockToggleControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="Controls\MediaCollectionInfoControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

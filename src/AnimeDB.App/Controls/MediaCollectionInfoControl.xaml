@@ -59,7 +59,7 @@
             <TextBlock Grid.Column="9" Text="" Style="{StaticResource HeaderStyle}" />
             <TextBlock Grid.Column="10" Text="" Style="{StaticResource HeaderStyle}" />
         </Grid>
-        <ItemsRepeater Grid.Row="2" ItemsSource="{Binding MediaCollection, ElementName=MediaCollectionInfoControlRoot}">
+        <ItemsRepeater Grid.Row="2" ItemsSource="{x:Bind MediaCollection, Mode=OneWay}">
             <DataTemplate x:DataType="models:Media">
                 <Grid>
                     <Grid.ColumnDefinitions>

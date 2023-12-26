@@ -19,6 +19,8 @@ namespace AnimeDB.Data.Entities
         public long? Sequence { get; set; }
         public string Algorithm { get; set; }
         public long? AppHidden { get; set; }
+        public long? IsFavorite { get; set; }
+        public long? IsBad { get; set; }
         public string CreatedOn { get; set; }
 
         public virtual Source Key { get; set; }

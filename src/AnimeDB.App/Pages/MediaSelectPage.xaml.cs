@@ -118,18 +118,17 @@ namespace AnimeDB.App.Pages
             }
         }
 
-        private void ThemeInfoControl_ThemeUnHide(ThemeInfoControl sender, ThemeInfoHideEventArgs args)
+        private void ThemeInfoControl_AppHiddenToggled(ThemeInfoControl sender, ThemeInfoAttributeToggledEventArgs args)
         {
             try
             {
-                var rowsUpdated = this.AnimeDBService.UpdateThemeHide(this.CurrentThemeId, false);
+                var rowsUpdated = this.AnimeDBService.UpdateThemeAppHidden(this.CurrentThemeId, args.IsOn);
 
                 if (rowsUpdated > 0)
                 {
-                    this.ShowMessage($"Theme {this.CurrentThemeId} unhidden.", InfoBarSeverity.Success);
+                    var message = args.IsOn ? "is hidden" : "is unhidden";
+                    this.ShowMessage($"Theme {this.CurrentThemeId} {message}.", InfoBarSeverity.Success);
                 }
-
-                this.NavigationNextButton_Click(sender, null);
             }
             catch (Exception error)
             {
@@ -137,18 +136,35 @@ namespace AnimeDB.App.Pages
             }
         }
 
-        private void ThemeInfoControl_ThemeHide(ThemeInfoControl sender, ThemeInfoHideEventArgs args)
+        private void ThemeInfoControl_IsFavoriteToggled(ThemeInfoControl sender, ThemeInfoAttributeToggledEventArgs args)
         {
             try
             {
-                var rowsUpdated = this.AnimeDBService.UpdateThemeHide(this.CurrentThemeId, true);
+                var rowsUpdated = this.AnimeDBService.UpdateThemeIsFavorite(this.CurrentThemeId, args.IsOn);
 
                 if (rowsUpdated > 0)
                 {
-                    this.ShowMessage($"Theme {this.CurrentThemeId} hidden.", InfoBarSeverity.Success);
+                    var message = args.IsOn ? "is a favorite theme" : "is not a favorite theme";
+                    this.ShowMessage($"Theme {this.CurrentThemeId} {message}.", InfoBarSeverity.Success);
                 }
+            }
+            catch (Exception error)
+            {
+                this.ShowMessage($"Error updating selected media: {error.Message}", InfoBarSeverity.Error);
+            }
+        }
 
-                this.NavigationNextButton_Click(sender, null);
+        private void ThemeInfoControl_IsBadToggled(ThemeInfoControl sender, ThemeInfoAttributeToggledEventArgs args)
+        {
+            try
+            {
+                var rowsUpdated = this.AnimeDBService.UpdateThemeIsBad(this.CurrentThemeId, args.IsOn);
+
+                if (rowsUpdated > 0)
+                {
+                    var message = args.IsOn ? "is a bad theme" : "is not a bad theme";
+                    this.ShowMessage($"Theme {this.CurrentThemeId} {message}.", InfoBarSeverity.Success);
+                }
             }
             catch (Exception error)
             {

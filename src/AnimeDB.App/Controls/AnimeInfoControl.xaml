@@ -13,10 +13,13 @@
             <Setter Property="Margin" Value="0,30,0,15" />
         </Style>
         <Style x:Key="SearchButton" TargetType="HyperlinkButton">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{ThemeResource ControlFillColorSecondaryBrush}" />
+            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}" />
             <Setter Property="Margin" Value="10,10,0,0" />
-            <Setter Property="Width" Value="40" />
+            <Setter Property="Padding" Value="10,0,10,0" />
+            <Setter Property="Width" Value="Auto" />
             <Setter Property="Height" Value="40" />
-            <Setter Property="Background" Value="SlateGray" />
         </Style>
     </UserControl.Resources>
     <Grid Style="{StaticResource GridStyle}">
@@ -31,16 +34,21 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Anime" Style="{StaticResource TitleStyle}"  />
-        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="0" Text="{Binding Anime.Id, ElementName=AnimeInfoControlRoot}" Header="Id"/>
-        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="1" Text="{Binding Anime.Title, ElementName=AnimeInfoControlRoot}" Header="Title"/>
-        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="2" Text="{Binding Anime.Season, ElementName=AnimeInfoControlRoot}" Header="Season"/>
-        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="3" Text="{Binding Anime.Year, ElementName=AnimeInfoControlRoot}" Header="Year"/>
-        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="4" Text="{Binding Anime.Type, ElementName=AnimeInfoControlRoot}" Header="Type"/>
-        <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="50, 0, 0, 0">
-            <HyperlinkButton NavigateUri="{Binding Anime.AniListLink, ElementName=AnimeInfoControlRoot}" Style="{StaticResource SearchButton}">
-                <TextBlock Text="AL" FontSize="16" />
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="0" Text="{x:Bind Anime.AniList.Id, Mode=OneWay}" Header="AniList"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="1" Text="{x:Bind Anime.MyAnimeList.Id, Mode=OneWay}" Header="MyAnimeList"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="2" Text="{x:Bind Anime.AniList.Title, Mode=OneWay}" Header="Title"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="3" Text="{x:Bind Anime.AniList.Season, Mode=OneWay}" Header="Season"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="4" Text="{x:Bind Anime.AniList.Year, Mode=OneWay}" Header="Year"/>
+        <localControls:InfoBlockControl Grid.Row="1" Grid.Column="5" Text="{x:Bind Anime.AniList.Type, Mode=OneWay}" Header="Type"/>
+        <StackPanel Grid.Row="1" Grid.Column="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="50, 0, 0, 0">
+            <HyperlinkButton NavigateUri="{x:Bind Anime.AniList.Url, Mode=OneWay}" Style="{StaticResource SearchButton}">
+                <TextBlock Text="AniList" FontSize="16" />
+            </HyperlinkButton>
+            <HyperlinkButton NavigateUri="{x:Bind Anime.MyAnimeList.Url, Mode=OneWay}" Style="{StaticResource SearchButton}">
+                <TextBlock Text="MyAnimeList" FontSize="16" />
             </HyperlinkButton>
         </StackPanel>
     </Grid>
