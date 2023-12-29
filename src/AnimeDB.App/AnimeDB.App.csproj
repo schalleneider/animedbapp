@@ -9,7 +9,7 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-    <PackageCertificateThumbprint>AE1E79034EECC7D47257D8AE330D6F4E84BF1465</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>1D0E26F293EC32145E96FECF1F17530F83FACD62</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>AnimeDB.App.ico</ApplicationIcon>
