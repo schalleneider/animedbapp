@@ -8,6 +8,8 @@
         public string Title { get; set; }
         public string Type { get; set; }
         public bool AppHidden { get; set; }
+        public bool IsFavorite { get; set; }
+        public bool IsBad { get; set; }
 
         public string YoutubeSearchLink
         {

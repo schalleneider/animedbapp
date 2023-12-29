@@ -20,7 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnimeDB", "AnimeDB", "{AD48
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cert", "cert", "{6D4CC4D8-1DAB-4F4F-A80E-5A48CF1FDB39}"
 	ProjectSection(SolutionItems) = preProject
-		..\cert\PhinalFontasyCorporation_CA_02181985.pfx = ..\cert\PhinalFontasyCorporation_CA_02181985.pfx
+		..\cert\New-Certificate.ps1 = ..\cert\New-Certificate.ps1
+		..\cert\PhinalFontasyCorporation_CA.pfx = ..\cert\PhinalFontasyCorporation_CA.pfx
 	EndProjectSection
 EndProject
 Global

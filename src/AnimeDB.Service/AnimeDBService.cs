@@ -42,7 +42,7 @@ namespace AnimeDB.Service
                          where theme.Id == themeId
                          select new MediaSelect
                          {
-                             Anime = anilist.ToModel(),
+                             Anime = new Anime { AniList = anilist.ToModel(), MyAnimeList = myanimelist.ToModel() },
                              Theme = theme.ToModel(),
                              MediaCollection = theme.Media.ToModel()
                          };
@@ -65,13 +65,37 @@ namespace AnimeDB.Service
             return this.AnimeDBContext.SaveChanges();
         }
 
-        public int UpdateThemeHide(long themeId, bool hide)
+        public int UpdateThemeAppHidden(long themeId, bool value)
         {
             var theme = this.AnimeDBContext.Theme.Where(theme => theme.Id == themeId).FirstOrDefault();
 
             if (theme != null)
             {
-                theme.AppHidden = hide ? 1 : 0;
+                theme.AppHidden = value ? 1 : 0;
+            }
+
+            return this.AnimeDBContext.SaveChanges();
+        }
+
+        public int UpdateThemeIsFavorite(long themeId, bool value)
+        {
+            var theme = this.AnimeDBContext.Theme.Where(theme => theme.Id == themeId).FirstOrDefault();
+
+            if (theme != null)
+            {
+                theme.IsFavorite = value ? 1 : 0;
+            }
+
+            return this.AnimeDBContext.SaveChanges();
+        }
+
+        public int UpdateThemeIsBad(long themeId, bool value)
+        {
+            var theme = this.AnimeDBContext.Theme.Where(theme => theme.Id == themeId).FirstOrDefault();
+
+            if (theme != null)
+            {
+                theme.IsBad = value ? 1 : 0;
             }
 
             return this.AnimeDBContext.SaveChanges();

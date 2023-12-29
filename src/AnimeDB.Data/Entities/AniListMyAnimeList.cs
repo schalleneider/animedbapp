@@ -10,7 +10,7 @@ namespace AnimeDB.Data.Entities
         public string CreatedOn { get; set; }
         public string LastModifiedOn { get; set; }
 
-        public virtual AniList AniList { get; set; } = null!;
-        public virtual MyAnimeList MyAnimeList { get; set; } = null!;
+        public virtual AniList AniList { get; set; }
+        public virtual MyAnimeList MyAnimeList { get; set; }
     }
 }

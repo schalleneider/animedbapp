@@ -9,7 +9,7 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-    <PackageCertificateThumbprint>AE1E79034EECC7D47257D8AE330D6F4E84BF1465</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>1D0E26F293EC32145E96FECF1F17530F83FACD62</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>AnimeDB.App.ico</ApplicationIcon>
@@ -28,6 +28,7 @@
   <ItemGroup>
     <None Remove="Controls\AnimeInfoControl.xaml" />
     <None Remove="Controls\InfoBlockControl.xaml" />
+    <None Remove="Controls\InfoBlockToggleControl.xaml" />
     <None Remove="Controls\MediaCollectionInfoControl.xaml" />
     <None Remove="Controls\ThemeInfoControl.xaml" />
     <None Remove="Pages\MediaSelectPage.xaml" />
@@ -59,6 +60,9 @@
     <ProjectReference Include="..\AnimeDB.Service\AnimeDB.Service.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\InfoBlockToggleControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="Controls\MediaCollectionInfoControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

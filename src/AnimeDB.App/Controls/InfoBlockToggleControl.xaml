@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="AnimeDB.App.Controls.InfoBlockToggleControl"
+    x:Name="InfoBlockToggleControlRoot"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <Style x:Key="HeaderStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style x:Key="ItemStyle" TargetType="ToggleSwitch">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Width" Value="60" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Margin="10,0,0,0">
+        <TextBlock Style="{StaticResource HeaderStyle}" Text="{x:Bind Header, Mode=OneWay}" Visibility="{x:Bind  HeaderVisibility, Mode=OneWay}" />
+        <ToggleSwitch x:Name="ToggleSwitchControl" Style="{StaticResource ItemStyle}" OnContent="" OffContent="" Toggled="ToggleSwitch_Toggled" />
+    </StackPanel>
+</UserControl>
